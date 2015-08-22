@@ -1,138 +1,178 @@
+
 <!DOCTYPE html>
-<!-- Declares the root element that allows behaviour to be modified through Angular custom HTML tags. -->
-<html ng-app="persons">
-<head>
-    <title>javaee7-angular</title>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAD7/f4AGz5qAP39/gBBaZUA+fn5ADNahgA8VngAGkBtAEZplQAZPWUABC1ZADZgjgDk3+AAAClUAB9DbQAWOGMASGuYADFYhAAaS3gAIkl1APr5+gBSZoUAHUdzAAsvVAAvVoIAIEdzABgYGAAEKlIAFUVxALi4vADg6uwAPGOPAPX2+wDv8vYA/f79AP7+/QAtVIAAJSUlAB5FcQD4+P4ACC5YAP38+wA2XYgABSpTABxDbwAfSnQADTRgAPr+/gAjSnQA/P7+AP3+/gABJVEA/v7+APf5/AAeQmoA4eDgAAsyXgAeQW0ABCdUADZdiQBJbJgA7u3tAPn49wANNGEAI0p1AFBqjQA3X4wAMluHAO3y8AA0W4cA6+vrAGNzjAAfPFsA/Pz9ABY5ZAD6//0A+Pj4ADJZhQClpbMA6enpACNKdgAMLlIABSxYAPv3+wCMlKIACipNADBXgwD49vYAZXeKACFIdAAdS3QA/v37ABY1TwAXOWUADClIAC5VgQAOK1MAJiYmAB9GcgAYQm0AWGmBAD9jiwDd2dYAHUhtACNOfQAONWEA/vz/ADxZdgA6YIwAG0JuAB9CbgAwTGoA/P39AP39/QABJFAAHERpAOTu9wAVMUwAHUBsABc8ZwD7+/sAJUtuAPr++wALJlMADw8PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDQ0NDQ0NDQ0NDQ0NDQ0NDR7FgcXGysPDnddSjYobzFbUFBQWSZuAQksYm0mYlleAAVFBREYRD5TV2M4VlBQUnFIPAgIFVRHZFhOGRlNZyk0InV2ORQgEAMqNWtAUCk0NDQKEx5hBBwZISV4JFkvNDQ0J0I3GnxzLT0aTGw/ejQ0NDR0XE8MCxgdRmYzcTQ0NDQ0I1ASMFBpO2haYDQ0NDQ0NDJ5GFBQUFBlDXA0NDQ0NDQ0ajofX1BQUTQ0NDQ0NDQ0NDRJUFBQUEE0NDQ0NDQ0NDQ0NC5QUFUCNDQ0NDQ0NDQ0NDRyQwYyNDQ0NDQ0NDQ0NDQ0SwI0NDQ0NDQ0NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
+    <title>Carousel Template for Bootstrap</title>
 
-    <!-- build:css css/third-party.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="lib/dependencies/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="lib/dependencies/css/ng-grid.min.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
+    <!-- Bootstrap core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/typeahead.css" rel="stylesheet">
 
-    <!-- build:css css/application.css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <!-- endbuild -->
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
 
-    <!-- build:js lib/third-party.js -->
-    <!-- bower:js -->
-    <script src="lib/dependencies/jquery.min.js"></script>
-    <script src="lib/dependencies/angular.min.js"></script>
-    <script src="lib/dependencies/angular-resource.min.js"></script>
-    <script src="lib/dependencies/ng-grid-2.0.11.min.js"></script>
-    <script src="lib/dependencies/ui-bootstrap-tpls.min.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js script/all.js -->
-    <script src="script/person.js"></script>
-    <!-- endbuild -->
-</head>
-
-<body>
-
-<h1>Java EE - Angular Application</h1>
-
-<br/>
-
-<!-- Specify a Angular controller script that binds Javascript variables to the feedback messages.-->
-<div class="message" ng-controller="alertMessagesController">
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-</div>
-
-<br>
-
-<!-- Specify a Angular controller script that binds Javascript variables to the grid.-->
-<div class="grid" ng-controller="personsListController">
-    <div>
-        <h3>List Persons</h3>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" rel="home" href="/mini-0.0" title="Stuotuo's Wish List">Home</a>
     </div>
 
-    <!-- Binds the grid component to be displayed. -->
-    <div class="gridStyle" ng-grid="gridOptions"></div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
 
-    <!--  Bind the pagination component to be displayed. -->
-    <pagination direction-links="true" boundary-links="true"
-                total-items="persons.totalResults" items-per-page="persons.pageSize"
-                ng-model="persons.currentPage" ng-change="refreshGrid()">
-    </pagination>
-</div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Gifts</a></li>
+            <li><a href="#">Good Restaurants</a></li>
+            <li><a href="#">Travel Destination</a></li>
+            <li><a href="#">Readings</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
 
-<!-- Specify a Angular controller script that binds Javascript variables to the form.-->
-<div class="form" ng-controller="personsFormController">
-    <!-- Verify person, if there is no id present, that we are Adding a Person -->
-    <div ng-if="person.id == null">
-        <h3>Add Person</h3>
-    </div>
-    <!-- Otherwise it's an Edit -->
-    <div ng-if="person.id != null">
-        <h3>Edit Person</h3>
-    </div>
-
-    <div>
-        <!-- Specify the function to be called on submit and disable HTML5 validation, since we're using Angular validation-->
-        <form name="personForm" ng-submit="updatePerson()" novalidate>
-
-            <!-- Display an error if the input is invalid and is dirty (only when someone changes the value) -->
-            <div class="form-group" ng-class="{'has-error' : personForm.name.$invalid && personForm.name.$dirty}">
-                <label for="name">Name:</label>
-                <!-- Display a check when the field is valid and was modified -->
-                <span ng-class="{'glyphicon glyphicon-ok' : personForm.name.$valid && personForm.name.$dirty}"></span>
-
-                <input id="name" name="name" type="text" class="form-control" maxlength="50"
-                       ng-model="person.name"
-                       required ng-minlength="2" ng-maxlength="50"/>
-
-                <!-- Validation messages to be displayed on required, minlength and maxlength -->
-                <p class="help-block" ng-show="personForm.name.$error.required">Add Name.</p>
-                <p class="help-block" ng-show="personForm.name.$error.minlength">Name must be at least 2 characters long.</p>
-                <p class="help-block" ng-show="personForm.name.$error.maxlength">Name cannot be longer than 50 characters.</p>
+        <div class="col-sm-3 col-md-3 pull-right">
+        <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" autocomplete="false" class="typeahead" placeholder="Search" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button id="disp-search" class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
             </div>
-
-            <!-- Display an error if the input is invalid and is dirty (only when someone changes the value) -->
-            <div class="form-group" ng-class="{'has-error' : personForm.description.$invalid && personForm.description.$dirty}">
-                <label for="description">Description:</label>
-                <!-- Display a check when the field is valid and was modified -->
-                <span ng-class="{'glyphicon glyphicon-ok' : personForm.description.$valid && personForm.description.$dirty}"></span>
-
-                <input id="description" name="description" type="text" class="form-control" maxlength="100"
-                       ng-model="person.description"
-                       required ng-minlength="5" ng-maxlength="100"/>
-
-                <!-- Validation messages to be displayed on required, minlength and maxlength -->
-                <p class="help-block" ng-show="personForm.description.$error.required">Add Description.</p>
-                <p class="help-block" ng-show="personForm.description.$error.minlength">Description must be at least 5 characters long.</p>
-                <p class="help-block" ng-show="personForm.description.$error.maxlength">Description cannot be longer than 100 characters.</p>
-            </div>
-
-            <!-- Display an error if the input is invalid and is dirty (only when someone changes the value) -->
-            <div class="form-group" ng-class="{'has-error' : personForm.imageUrl.$invalid && personForm.imageUrl.$dirty}">
-                <label for="imageUrl">Image URL:</label>
-                <!-- Display a check when the field is valid and was modified -->
-                <span ng-class="{'glyphicon glyphicon-ok' : personForm.imageUrl.$valid && personForm.imageUrl.$dirty}"></span>
-
-                <input id="imageUrl" name="imageUrl" type="url" class="form-control" maxlength="500"
-                       ng-model="person.imageUrl"
-                       required/>
-
-                <!-- Validation messages to be displayed on required and invalid. Type 'url' makes checks to a proper url format. -->
-                <p class="help-block" ng-show="personForm.imageUrl.$error.required">Add Image URL.</p>
-                <p class="help-block" ng-show="personForm.imageUrl.$invalid && personForm.imageUrl.$dirty">Invalid Image URL.</p>
-            </div>
-
-            <div class="avatar" ng-if="person.imageUrl">
-                <img ng-src="{{person.imageUrl}}" width="400" height="250"/>
-            </div>
-
-            <!-- Form buttons. The 'Save' button is only enabled when the form is valid. -->
-            <div class="buttons">
-                <button type="button" class="btn btn-primary" ng-click="clearForm()">Clear</button>
-                <button type="submit" class="btn btn-primary" ng-disabled="personForm.$invalid">Save</button>
-            </div>
+        </div>
         </form>
+        </div>
+
     </div>
 </div>
+<div class="container">
+  <h2>Wish List</h2>
+  <p>Good day, Da Tou!</p>            
+  <table id="mytable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody id="image-table">
+    </tbody>
+  </table>
+</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="./js/typeahead.bundle.min.js"></script>
+    <script>
+jQuery(document).ready(function(){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "showall";
 
-</body>
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4) {
+            myFunction(xmlhttp.responseText, function(titles){
+                var substringMatcher = function(strs) {
+                    return function findMatchers(q, cb) {
+                    var matches, substrRegex;
+                    matches = [];
+                    substrRegex = new RegExp(q, 'i');
+                    $.each(strs, function(i, str) {
+                        if (substrRegex.test(str)) {
+                            matches.push(str);
+                        }
+                    });
+
+                    cb(matches);
+                    };
+                };
+
+                $('#srch-term').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                },
+                {
+                    name: 'titles',
+                    source: substringMatcher(titles)
+                });
+            });
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    $('#disp-search').click(function(){
+        dispSearch($('#srch-term').val());
+    });
+});
+
+function myFunction(response, callback) {
+    var arr = JSON.parse(response).data;
+    var titles = [];
+    // create table
+    var i;
+
+    $('#mytable tr').remove();
+
+    for(i = 0; i < arr.length; i++) {
+        titles.push(arr[i].title);
+
+        var image = '<img class="img-thumnail" src="'+arr[i].image+'" style="width:100%" />';
+        var previewLink = '<tr><td>'+arr[i].title
+                +'</td><td><a class="headerPreview" href="'+arr[i].url
+                +'" >View Details</a></td><td><a onClick="removeEntry(\''+arr[i].title
+                +'\'); return false;" href="javascript:window.location.href=window.location.href"><span class="glyphicon glyphicon-remove"></span></a></td></tr>';
+        $('#image-table').append(previewLink);
+        $('.headerPreview').popover({
+            html: true,
+            content: image,
+            placement: 'left',
+            trigger: 'hover'
+        });
+
+    }
+    callback(titles);
+}
+
+function removeEntry(titleToDel) {
+    var xmlhttp = new XMLHttpRequest();
+    var url = "remove?title="+titleToDel;
+
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4) {
+            location.reload();
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+function dispSearch(term) {
+    console.log(term);
+    var xmlhttp = new XMLHttpRequest();
+    var url = "showall?title="+term;
+
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4) {
+            myFunction(xmlhttp.responseText, function(titles){});
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+
+    </script>
+  </body>
 </html>
+
