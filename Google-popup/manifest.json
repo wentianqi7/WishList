@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "Stuotuo Wish Helper",
+  "description": "This extension enables user to add an item to www.stuotuo.com ",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "<all_urls>",
+	"background",
+	"notifications"
+  ]
+}
